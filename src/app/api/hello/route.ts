@@ -1,3 +1,5 @@
+// example route with each action you'd need...
+
 // import { prisma } from "@/lib/prisma";
 // export async function POST(request: Request) {
 //   const { userId } = await request.json();
