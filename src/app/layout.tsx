@@ -2,6 +2,7 @@ import QueryClientProviderWrapper from "@/lib/ReactQuery";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { NextAuthProvider } from "@/lib/AuthProvider";
+import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NextAuthProvider>
-          <QueryClientProviderWrapper>{children}</QueryClientProviderWrapper>
+          <QueryClientProviderWrapper>
+            <main>
+              <Navbar />
+              <div>{children}</div>
+            </main>
+          </QueryClientProviderWrapper>
         </NextAuthProvider>
       </body>
     </html>
