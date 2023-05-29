@@ -5,13 +5,16 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authOptions: NextAuthOptions = {
   callbacks: {
-    async session({ session, _ }) {
+    async session({ session }) {
       // Send properties to the client, like an access_token and user id from a provider.
-      const user = await prisma.user.findUnique({
-        where: { email: session.user?.email as string },
-        select: { email: true, id: true, name: true },
-      });
-      return { ...session, user };
+      if (session.user) {
+        const fetchedUser = await prisma?.user.findUnique({
+          where: { email: session.user?.email as string },
+          select: { email: true, id: true, name: true },
+        });
+        return { ...session, user: fetchedUser };
+      }
+      return session;
     },
   },
   session: {

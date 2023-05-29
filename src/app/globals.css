@@ -20,7 +20,10 @@
     @apply visited:text-purple-600;
   }
   main {
-    @apply max-w-3xl mx-auto pt-6;
+    @apply max-w-3xl mx-auto sm:pt-6 sm:p-0 p-3;
+  }
+  nav {
+    @apply sm:p-0 px-3;
   }
   form > div > label {
     @apply block text-sm font-medium leading-6 text-gray-900;
@@ -34,7 +37,7 @@
   }
   button,
   div > input[type="submit"] {
-    @apply rounded-md  px-2.5 py-1.5 text-sm font-semibold  shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
+    @apply rounded-md cursor-pointer px-2.5 py-1.5 text-sm font-semibold  shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2;
   }
   .btn-primary {
     @apply bg-indigo-600 text-white hover:bg-indigo-500 focus-visible:outline-indigo-600;

@@ -3,30 +3,29 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+const NAVITEMS = [
+  { title: "Home", href: "/", id: 0 },
+  { title: "Protected", href: "/protected", id: 1 },
+];
+
 const Navbar = () => {
   const pathName = usePathname();
   const session = useSession();
   return (
     <nav className="flex justify-between">
       <ul className="flex gap-2">
-        <li>
-          <Link
-            href="/"
-            className={(pathName as string) == "/" ? "active-route" : ""}
-          >
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/protected"
-            className={
-              (pathName as string) == "/protected" ? "active-route" : ""
-            }
-          >
-            Protected
-          </Link>
-        </li>
+        {NAVITEMS.map((link) => (
+          <li key={link.id}>
+            <Link
+              href={link.href}
+              className={
+                (pathName as string) == link.href ? "active-route" : ""
+              }
+            >
+              {link.title}
+            </Link>
+          </li>
+        ))}
       </ul>
       <div>
         {session.status == "authenticated" ? (
